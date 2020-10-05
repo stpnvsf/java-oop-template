@@ -19,5 +19,67 @@ import java.util.Objects;
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
 public class Author {
+    private String name;
+    private String lastName;
+    private LocalDate birthdate;
+    private String country;
 
+    public Author() {
+    }
+
+    public Author(String name, String lastName,
+                  LocalDate birthDate, String country) {
+        this.name = name;
+        this.lastName = lastName;
+        this.birthdate = birthDate;
+        this.country = country;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthdate = birthDate;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Author)) return false;
+        Author author = (Author) o;
+        return getName().equals(author.getName()) &&
+                getLastName().equals(author.getLastName()) &&
+                Objects.equals(getBirthdate(), author.getBirthdate()) &&
+                Objects.equals(getCountry(), author.getCountry());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getLastName(), getBirthdate(), getCountry());
+    }
 }
